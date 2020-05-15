@@ -1,0 +1,25 @@
+# Modified Example 8 from http://www.math.canterbury.ac.nz/bio/RAF/
+# All reactions are two-way
+# maxCAF all, maxRAF all, max-pRAF all
+
+
+
+r01 : a + baa [aa, aabaabbb*(aa)] {a, baa, a*(bb,baab)} <=> baaa
+r02 : aaba + ab [baaa] <=> aabaab
+r03 : aa + ba [a] <=> aaba
+r04 : aa + aabaa [aaba] <=> aaaabaa
+r05 : a + aaba [baa] <=> aabaa, a + (bab, bb + ba)
+r06 : baa + bab [aabaa, ba] <=> baabab
+r07 : a + ba [baab] <=> baa
+r08 : baa + bb [b] <=> baabb
+r09 : baabb + bab [abb] {ba} <=> baabbbab
+r10 : b + bab [baabbbab] {a*ba, a*(bab,a)} <=> babb
+r11 : b + ba [bb] <=> bab
+r12 : a + b [ab] <=> ba
+r13 : a + b [a] <=> ab
+r14 : a + bb [ab, b] <=> abb
+r15 : ab + ba [abb] <=> baab
+r16 : ab [aabaabbb] <=> abab
+r17 : aabaab + bb [baab] <=> aabaabbb
+
+Food: a, b, aa, bb

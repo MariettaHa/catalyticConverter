@@ -1,0 +1,26 @@
+<meta-data>
+nrMolecules = 5740
+nrFoodSet   = 68
+nrReactions = 965
+
+<molecules>
+H2O; Water	C00001
+ATP; Adenosine 5'-triphosphate	C00002
+ADP; Adenosine 5'-diphosphate	C00008
+Orthophosphate; Phosphate; Phosphoric acid; Orthophosphoric acid	C00009
+CoA; Coenzyme A; CoA-SH	C00010
+(...)
+CO2; Carbon dioxide	C00011
+
+<food set>
+Hydrogen; H2	C00282
+CO2; Carbon dioxide	C00011
+H2O; Water	C00001
+(...)
+CO; Carbon monoxide	C00237
+
+<reactions>
+R00002	16 C00002 + 16 C00001 + 8 C00138 <=> 8 C05359 + 16 C00009 + 16 C00008 + 8 C00139	Other_clusters&IronSulfurClusters&C00002	1.0
+R00004	C00013 + C00001 <=> 2 C00009	C00038 C00175 C19610 C00305	1.0
+(...)
+R_Molybdopterin_3	C19871 => Molybdopterin	Pooling	1.0

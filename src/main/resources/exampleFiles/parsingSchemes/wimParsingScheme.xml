@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<doc fileEnding="wim|txt" id="doc" schemeName="WIM" regex="([\s\S]*)" >
+    <match>
+        <group grId="1" id="scheme" annotation="doc" regex="^(&lt;meta[-]?data&gt;([\s\S]*))(&lt;molecules&gt;([\s\S]*))(&lt;food set&gt;([\s\S]*))(&lt;reactions&gt;([\s\S]*))$">
+            <match>
+                <group grId="1" id="metaData" regex="(.+)">
+                    <match>
+                        <group grId="1" id="metaDataItem" annotation="metadata"></group>
+                    </match>
+                </group>
+                <group grId="3" id="molecules" regex="(?:[\r\n])([^\r\n]+)">
+                    <match>
+                        <group grId="1" id="moleculeItem" annotation="species" regex="^([^\r\n\t]*)(\t)([^\r\n\t]*)$">
+                            <match>
+                                <group grId="1" id="moleculeNames" annotation="speciesNames" listSeparator="; "></group>
+                                <group grId="3" id="moleculeId" annotation="speciesId"></group>
+                                <group grId="0" id="moleculeInitAmount" annotation="speciesInitAmount" value="0.0"></group>
+                            </match>
+                        </group>
+                    </match>
+                </group>
+                <group grId="5" id="foodset" regex="(?:[\r\n])([^\r\n]+)">
+                    <match>
+                        <group grId="1" id="foodItem" annotation="species" regex="^([^\r\n\t]*)(\t)([^\r\n\t]*)$">
+                            <match>
+                                <group grId="1" id="foodMolNames" annotation="speciesNames" listSeparator="; "></group>
+                                <group grId="3" id="foodMolId" annotation="speciesId"></group>
+                                <group grId="0" id="foodMolinitAmount" annotation="speciesInitAmount" value="1.0"></group>
+                            </match>
+                        </group>
+                    </match>
+                </group>
+                <group grId="7" id="reactions" regex="(?:[\r\n])([^\r\n]+)">
+                    <match>
+                        <group grId="1" id="reaction" annotation="reaction" regex="(.*)\t([^\n\r\t]+) (&lt;[=-]>|[=-]&gt;) ([^\n\r\t]+)\t([^\n\r\t]+)\t(\{([^\n\r\t]+)\}[\t])?([0-9.]+)">
+                            <match>
+                                <group grId="1" id="reactionId" annotation="reactionId"></group>
+                                <group grId="2" id="reactants" annotation="reactionReactantsList" listSepAND="[ ]?\+[ ]?" listSepOR=" "></group>
+                                <group grId="3" id="isReversible" annotation="reactionIsReversible" reversibleRegex="(&lt;=&gt;)"></group>
+                                <group grId="4" id="products" annotation="reactionProductsList" listSepAND="[ ]?\+[ ]?" listSepOR=" "></group>
+                                <group grId="5" id="catalysts" annotation="reactionCatalystsList" listSepAND="&amp;" listSepOR=" "></group>
+                                <group grId="7" id="inhibitors" annotation="reactionInhibitorsList" listSepAND="&amp;" listSepOR=" "></group>
+                                <group grId="8" id="weight" annotation="reactionWeight"></group>
+                            </match>
+                        </group>
+                    </match>
+                </group>
+            </match>
+        </group>
+    </match>
+</doc>

@@ -1,0 +1,44 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:annotation>
+        <xsd:documentation xml:lang="EN">
+            XML Scheme for system biology file parsing schemes
+        </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:element name="doc" type="Document"/>
+
+    <xsd:complexType name="Document">
+        <xsd:sequence>
+            <xsd:element name="match" type="RegexMatch" minOccurs="1"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string"/>
+        <xsd:attribute name="fileEnding" type="xsd:string"/>
+        <xsd:attribute name="schemeName" type="xsd:string"/>
+        <xsd:attribute name="regex" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:element name="group" type="MatchingGroup"/>
+
+    <xsd:complexType name="MatchingGroup">
+        <xsd:sequence>
+            <xsd:element name="match" type="RegexMatch" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string"/>
+        <xsd:attribute name="grId" type="xsd:string"/>
+        <xsd:attribute name="regex" type="xsd:string"/>
+        <xsd:attribute name="annotation" type="xsd:string"/>
+        <xsd:attribute name="value" type="xsd:string"/>
+        <xsd:attribute name="listSeparator" type="xsd:string"/>
+        <xsd:attribute name="listSepAND" type="xsd:string"/>
+        <xsd:attribute name="listSepOR" type="xsd:string"/>
+        <xsd:attribute name="reversibleRegex" type="xsd:string"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="RegexMatch">
+        <xsd:sequence>
+            <xsd:element name="group" type="MatchingGroup" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+
+    </xsd:complexType>
+
+</xsd:schema>
