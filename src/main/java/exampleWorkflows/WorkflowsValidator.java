@@ -14,7 +14,7 @@ public class WorkflowsValidator {
 
     public static void workflow_validate_WIM() {
         Validator validator = new Validator();
-        System.out.println(validator.validateFile(Paths.get("src/main/resources/exampleFiles/wim/Original_Archaea.txt"),
+        System.out.println(validator.validateFile(Paths.get("src/main/resources/exampleFiles/wim/OriginalArchaea.txt"),
                 "wim", null));
     }
 

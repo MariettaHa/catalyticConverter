@@ -6,6 +6,6 @@ import exampleWorkflows.WorkflowsValidator;
 public class Main {
 
     public static void main(String[] args){
-        WorkflowsValidator.workflow_validate_parsingScheme();
+        WorkflowsValidator.workflow_validate_WIM();
     }
 }
